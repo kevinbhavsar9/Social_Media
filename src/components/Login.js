@@ -3,13 +3,28 @@ import React, { Component, createRef } from 'react';
 class Login extends Component {
   constructor() {
     super();
-    this.emailInputRef = React.createRef();
-    this.passwordInputRef = React.createRef();
+    // this.emailInputRef = React.createRef();
+    // this.passwordInputRef = React.createRef();
+    this.state = {
+      email: '',
+      password: '',
+    };
   }
+
+  handlePasswordChange = (e) => {
+    this.setState({
+      password: e.target.value,
+    });
+  };
+  handleEmailChange = (e) => {
+    this.setState({
+      email: e.target.value,
+    });
+  };
+
   handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log('Email input ', this.emailInputRef);
-    console.log('Password input ', this.passwordInputRef);
+    console.log(this.state);
   };
   render() {
     return (
@@ -19,7 +34,8 @@ class Login extends Component {
           <input
             type="email"
             placeholder="Email"
-            ref={this.emailInputRef}
+            value={this.state.email}
+            onChange={this.handleEmailChange}
             required
           />
         </div>
@@ -27,7 +43,8 @@ class Login extends Component {
           <input
             type="password"
             placeholder="Password"
-            ref={this.passwordInputRef}
+            onChange={this.handlePasswordChange}
+            value={this.state.password}
             required
           />
         </div>
