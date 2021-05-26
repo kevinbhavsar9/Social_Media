@@ -1,9 +1,9 @@
 import { UPDATE_POSTS } from '../actions/actionTypes';
-import { ApiUrls } from '../helpers/url';
+import { APIUrls } from '../helpers/url';
 
 export function fetchPosts() {
   return (dispatch) => {
-    const url = ApiUrls.fetchPosts();
+    const url = APIUrls.fetchPosts();
     fetch(url)
       .then((response) => {
         return response.json();

@@ -2,13 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import jwtDecode from 'jwt-decode';
 
 import { fetchPosts } from '../actions/posts';
 import { Navbar, Home, Page404, Login, Signup } from './';
 
 class App extends React.Component {
   componentDidMount() {
+    console.log('component did mount');
     this.props.dispatch(fetchPosts());
+    const token = localStorage.getItem('token');
+    if (token) {
+      const user = jwtDecode(token);
+      console.log(user);
+    }
   }
 
   render() {

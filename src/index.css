@@ -405,6 +405,9 @@ nav .nav-links ul li:hover {
   border: none;
   outline: none;
 }
+.field button:disabled {
+  cursor: not-allowed;
+}
 .field button:hover {
   cursor: pointer;
 }
