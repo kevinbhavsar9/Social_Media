@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { func } from 'prop-types';
+
 class PostsList extends Component {
   render() {
     const { posts } = this.props;

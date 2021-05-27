@@ -1,7 +1,8 @@
 import React, { Component, createRef } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router';
 
-import { login } from '../actions/auth';
+import { login, removeError } from '../actions/auth';
 
 class Login extends Component {
   constructor() {
@@ -33,8 +34,16 @@ class Login extends Component {
       this.props.dispatch(login(email, password));
     }
   };
+  componentWillUnmount() {
+    this.props.dispatch(removeError());
+  }
+
   render() {
-    const { error, inProgress } = this.props.auth;
+    const { error, inProgress, isLoggedin } = this.props.auth;
+    const { from } = this.props.location.state || { from: { pathname: '/' } };
+    if (isLoggedin) {
+      return <Redirect to={from} />;
+    }
     return (
       <form className="login-form">
         <span className="login-signup-header">Log In</span>

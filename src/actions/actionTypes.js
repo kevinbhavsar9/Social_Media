@@ -12,3 +12,5 @@ export const SIGNUP_FAILED = 'SIGNUP_FAILED';
 
 export const AUTHENTICATE_USER = 'AUTHENTICATE_USER';
 export const LOG_OUT = 'LOG_OUT';
+
+export const REMOVE_ERROR = 'REMOVE_ERROR';

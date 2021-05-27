@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { signup } from '../actions/signup';
+import { signup, removeError } from '../actions/auth';
+import { Redirect } from 'react-router-dom';
 
 class Signup extends Component {
   constructor() {
@@ -11,6 +12,10 @@ class Signup extends Component {
       password: '',
       confirm_password: '',
     };
+  }
+
+  componentWillUnmount() {
+    this.props.dispatch(removeError());
   }
 
   handleNameChange = (e) => {
@@ -42,8 +47,11 @@ class Signup extends Component {
   };
 
   render() {
-    const { error, inProgress } = this.props.signup;
+    const { error, inProgress, isLoggedin } = this.props.auth;
     // console.log(this.props);
+    if (isLoggedin) {
+      return <Redirect to="/" />;
+    }
     return (
       <form className="login-form">
         <span className="login-signup-header">Sign Up</span>
@@ -96,7 +104,7 @@ class Signup extends Component {
 
 function mapPropsToStore(state) {
   return {
-    signup: state.signup,
+    auth: state.auth,
   };
 }
 
