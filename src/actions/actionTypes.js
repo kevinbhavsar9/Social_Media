@@ -14,3 +14,10 @@ export const AUTHENTICATE_USER = 'AUTHENTICATE_USER';
 export const LOG_OUT = 'LOG_OUT';
 
 export const REMOVE_ERROR = 'REMOVE_ERROR';
+
+export const EDIT_FAILED = 'EDIT_FAILED';
+
+export const FETCHED_USER = 'FETCHED_USER';
+export const FETCH_USER_FAILED = 'FETCH_USER_FAILED';
+export const FETCH_USER_START = 'FETCH_USER_START';
+export const ADD_FRIEND = 'ADD_FRIEND';

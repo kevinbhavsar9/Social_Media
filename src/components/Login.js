@@ -39,6 +39,7 @@ class Login extends Component {
   }
 
   render() {
+    console.log(this.props);
     const { error, inProgress, isLoggedin } = this.props.auth;
     const { from } = this.props.location.state || { from: { pathname: '/' } };
     if (isLoggedin) {

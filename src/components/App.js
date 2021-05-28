@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import jwtDecode from 'jwt-decode';
 
 import { fetchPosts } from '../actions/posts';
-import { Navbar, Home, Page404, Login, Signup, Settings } from './';
+import { Navbar, Home, Page404, Login, Signup, Settings, User } from './';
 
 import { authenticateUser } from '../actions/auth';
 const PrivateRoute = (privateRouteProps) => {
@@ -75,9 +75,15 @@ class App extends React.Component {
 
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
+            {/* <Route path="/user" component={User} /> */}
             <PrivateRoute
               path="/settings"
               component={Settings}
+              isLoggedin={auth.isLoggedin}
+            />
+            <PrivateRoute
+              path="/user/:userId"
+              component={User}
               isLoggedin={auth.isLoggedin}
             />
             <Route component={Page404} />

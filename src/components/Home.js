@@ -12,7 +12,7 @@ class Home extends Component {
     const { posts } = this.props;
     console.log(this.props);
     return (
-      <div>
+      <div className="poste">
         <PostsList posts={posts} />
       </div>
     );

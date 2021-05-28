@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { editProfile } from '../actions/profile';
 
 class Settings extends Component {
   constructor(props) {
     super(props);
     console.log(props.auth);
     this.state = {
+      id: props.auth.user.id,
       name: props.auth.user.name,
       password: '',
-      confirmPassword: '',
+      confirm_password: '',
       editMode: false,
     };
   }
@@ -17,6 +19,11 @@ class Settings extends Component {
     this.setState({
       [fieldName]: val,
     });
+  };
+  handleSavebtn = () => {
+    console.log('save btn clickd');
+    const { id, password, confirm_password, name } = this.state;
+    this.props.dispatch(editProfile(id, password, confirm_password, name));
   };
   render() {
     const { user } = this.props.auth;
@@ -44,6 +51,7 @@ class Settings extends Component {
               type="text"
               onChange={(e) => this.handleChange('name', e.target.value)}
               value={this.state.name}
+              required
             />
           ) : (
             <div classname="field-value">
@@ -60,6 +68,7 @@ class Settings extends Component {
               type="password"
               onChange={(e) => this.handleChange('password', e.target.value)}
               value={this.state.password}
+              required
             />
           </div>
         )}
@@ -71,16 +80,17 @@ class Settings extends Component {
             <input
               type="password"
               onChange={(e) =>
-                this.handleChange('confirmPassword', e.target.value)
+                this.handleChange('confirm_password', e.target.value)
               }
-              value={this.state.confirmPassword}
+              value={this.state.confirm_password}
+              required
             />
           </div>
         )}
 
         <div className="btn-grp">
           {editMode ? (
-            <button className="button save-btn" onClick={this.handleSaveBtn}>
+            <button className="button save-btn" onClick={this.handleSavebtn}>
               Save
             </button>
           ) : (

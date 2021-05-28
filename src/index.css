@@ -195,6 +195,7 @@ code {
 /* NAVBAR */
 .nav {
   display: flex;
+  /* background: #cecece; */
   background: #6200ee;
   padding: 10px 20px;
   align-items: center;
@@ -314,6 +315,9 @@ nav .nav-links ul li:hover {
 }
 .home .posts-list {
   flex-grow: 0.8;
+}
+.poste {
+  margin: 1% 41% 0% 4%;
 }
 .friends-list {
   background: #fff;
