@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import jwtDecode from 'jwt-decode';
 
 import { fetchPosts } from '../actions/posts';
+import { fetchFriends } from '../actions/friends';
 import { Navbar, Home, Page404, Login, Signup, Settings, User } from './';
 
 import { authenticateUser } from '../actions/auth';
@@ -20,7 +21,7 @@ const PrivateRoute = (privateRouteProps) => {
     <Route
       path={path}
       render={(props) => {
-        console.log(props);
+        // console.log(props);
         return isLoggedin ? (
           <Component {...props} />
         ) : (
@@ -39,13 +40,16 @@ const PrivateRoute = (privateRouteProps) => {
 };
 
 class App extends React.Component {
-  componentDidMount() {
-    console.log('component did mount');
+  constructor(props) {
+    super(props);
+  }
+  componentWillMount() {
+    // console.log('component did mount');
     this.props.dispatch(fetchPosts());
     const token = localStorage.getItem('token');
     if (token) {
       const user = jwtDecode(token);
-      console.log(user);
+      // console.log(user);
       this.props.dispatch(
         authenticateUser({
           email: user.email,
@@ -53,12 +57,13 @@ class App extends React.Component {
           name: user.name,
         })
       );
+      this.props.dispatch(fetchFriends());
     }
   }
 
   render() {
-    const { posts, auth } = this.props;
-    console.log(posts);
+    const { posts, auth, friends } = this.props;
+    console.log(friends);
     return (
       <Router>
         <div>
@@ -98,6 +103,7 @@ function mapStateToProps(state) {
   return {
     posts: state.posts,
     auth: state.auth,
+    friends: state.friends,
   };
 }
 

@@ -7,5 +7,19 @@ import Login from './Login';
 import Signup from './Signup';
 import Settings from './Settings';
 import User from './User';
+import FriendsList from './FriendsList';
+import FriendsListItem from './FriendsListItem';
 
-export { PostsList, App, Navbar, Home, Page404, Login, Signup, Settings, User };
+export {
+  PostsList,
+  App,
+  Navbar,
+  Home,
+  Page404,
+  Login,
+  Signup,
+  Settings,
+  User,
+  FriendsList,
+  FriendsListItem,
+};

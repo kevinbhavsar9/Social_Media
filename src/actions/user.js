@@ -45,21 +45,3 @@ export function fetchUserById(id) {
       });
   };
 }
-
-export function addFriend(id_friend) {
-  return (dispatch) => {
-    const url = APIUrls.addFriend(id_friend);
-    const token = localStorage.getItem('token');
-    fetch(url, {
-      type: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      });
-  };
-}

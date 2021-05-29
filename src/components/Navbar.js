@@ -2,11 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logoutUser } from '../actions/auth';
+import { unmountFriends } from '../actions/friends';
 
 class Navbar extends React.Component {
   handleLogoutButton = () => {
     localStorage.removeItem('token');
     this.props.dispatch(logoutUser());
+    this.props.dispatch(unmountFriends());
   };
   render() {
     const { auth } = this.props;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { PostsList } from './';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import FriendsList from './FriendsList';
 
 class Home extends Component {
   render() {
@@ -10,10 +11,13 @@ class Home extends Component {
       return <Redirect to="/login" />;
     }
     const { posts } = this.props;
-    console.log(this.props);
+    const friends = this.props.friends;
+    // friends.shift();
+
     return (
       <div className="poste">
         <PostsList posts={posts} />
+        <FriendsList friends={friends} />
       </div>
     );
   }
@@ -21,6 +25,7 @@ class Home extends Component {
 function mapPropsToState(state) {
   return {
     auth: state.auth,
+    friends: state.friends,
   };
 }
 

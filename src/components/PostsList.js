@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 class PostsList extends Component {
   render() {
     const { posts } = this.props;
-    console.log(posts);
+    // console.log(posts);
     return (
       <div className="posts-list">
         {posts.map((post) => (

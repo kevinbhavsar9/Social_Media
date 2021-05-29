@@ -11,6 +11,7 @@ import {
 } from './actionTypes';
 import { APIUrls } from '../helpers/url';
 import { getFormBody } from '../helpers/utils';
+import { fetchFriends, unmountFriends } from '../actions/friends';
 
 export function startLogin() {
   return {
@@ -48,6 +49,7 @@ export function login(email, password) {
           console.log(data);
           localStorage.setItem('token', data.data.token);
           dispatch(loginSuccess(data.data.user));
+          dispatch(fetchFriends());
           return;
         }
         dispatch(loginFailed(data.message));
@@ -62,6 +64,7 @@ export function authenticateUser(user) {
   };
 }
 export function logoutUser() {
+  // dispatch(unmountFriends());
   return {
     type: LOG_OUT,
   };

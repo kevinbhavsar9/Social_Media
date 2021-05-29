@@ -313,13 +313,18 @@ nav .nav-links ul li:hover {
   width: 80%;
   margin: 0 auto;
 }
-.home .posts-list {
-  flex-grow: 0.8;
+.posts-list {
+  width: 70%;
+  margin: 0% 2%;
+  /* background-color: #155724; */
 }
 .poste {
-  margin: 1% 41% 0% 4%;
+  /* margin: 1% 41% 0% 4%; */
+  display: flex;
 }
 .friends-list {
+  margin-right: 2%;
+  width: 25%;
   background: #fff;
   margin-left: 50px;
   flex-grow: 0.2;

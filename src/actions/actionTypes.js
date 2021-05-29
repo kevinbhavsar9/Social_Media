@@ -20,4 +20,9 @@ export const EDIT_FAILED = 'EDIT_FAILED';
 export const FETCHED_USER = 'FETCHED_USER';
 export const FETCH_USER_FAILED = 'FETCH_USER_FAILED';
 export const FETCH_USER_START = 'FETCH_USER_START';
+
+//friends
 export const ADD_FRIEND = 'ADD_FRIEND';
+export const UNMOUNT_FRIEND = 'UNMOUNT_FRIEND';
+export const REMOVE_FRIEND = 'REMOVE_FRIEND';
+export const FETCH_FRIEND_SUCCESS = 'FETCH_FRIEND_SUCCESS';

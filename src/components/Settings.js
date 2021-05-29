@@ -5,7 +5,7 @@ import { editProfile } from '../actions/profile';
 class Settings extends Component {
   constructor(props) {
     super(props);
-    console.log(props.auth);
+    // console.log(props.auth);
     this.state = {
       id: props.auth.user.id,
       name: props.auth.user.name,
@@ -21,7 +21,7 @@ class Settings extends Component {
     });
   };
   handleSavebtn = () => {
-    console.log('save btn clickd');
+    // console.log('save btn clickd');
     const { id, password, confirm_password, name } = this.state;
     this.props.dispatch(editProfile(id, password, confirm_password, name));
   };
